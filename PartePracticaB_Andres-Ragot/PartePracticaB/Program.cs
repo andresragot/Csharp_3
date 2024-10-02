@@ -12,20 +12,25 @@ namespace PartePracticaB
             {
                 Console.Clear();
                 Console.Write("Dinero disponible " + dinero); //representamos el dinero
-                foreach(string value in vs)
+                
+                foreach (string value in vs)
                 {
                     Console.Write("\t\t\t\t" + value + "\n\t\t");// y las pocisiones
                 }
+                
                 Console.WriteLine("1. Comprar poción");
                 Console.WriteLine("\t\t2. Vender poción");
                 Console.WriteLine("\t\t3. Salir");
                 numOpcion = int.TryParse(Console.ReadLine(), out opcion);//intentamos convertir lo que nos han dado en un int
+                
                 if (!numOpcion || opcion < 1 || opcion > 3)//verificamos que este correcto
                 {
                     Console.WriteLine("Opción incorrecta, inserte un valor entre 1 y 3. \n Pulse una tecla para continuar");
                     Console.ReadKey();
                 }
-            } while (!numOpcion || opcion < 1 || opcion > 3);//se repite mientras que no sea correcto
+            } 
+            while (!numOpcion || opcion < 1 || opcion > 3);//se repite mientras que no sea correcto
+            
             return opcion;//devolvemos la opcion escogiga para poder ser utilizada en nuestro modo empezar
         }
 
@@ -47,12 +52,14 @@ namespace PartePracticaB
                 Console.WriteLine("\t\t4. " + pociones[3] + " (" + precio[3] + " monedas)");
                 Console.WriteLine("\t\t5. " + pociones[4] + " (" + precio[4] + " monedas)");
                 opcion = int.TryParse(Console.ReadLine(), out numOpcion);
+                
                 if (!opcion || numOpcion< 1 || numOpcion > 5)//verificamos
                 {
                     Console.WriteLine("Opción incorrecta, inserte un valor entre 1 y 5. \n Pulse una tecla para continuar");
                     Console.ReadKey();
                 }
-            } while (!opcion || numOpcion< 1 || numOpcion> 5);//se repite mientras que el valor indicado no cumple con los requisitos
+            } 
+            while (!opcion || numOpcion< 1 || numOpcion> 5);//se repite mientras que el valor indicado no cumple con los requisitos
 
             int numPosicion;
             bool posicion;
@@ -66,7 +73,8 @@ namespace PartePracticaB
                     Console.WriteLine("Opción incorrecta, inserte un valor entre 1 y 5. \n Pulse una tecla para continuar");
                     Console.ReadKey();
                 }
-            } while (!posicion || numPosicion< 1 || numPosicion > 5);//se repite si no cumple con los requisitos
+            } 
+            while (!posicion || numPosicion< 1 || numPosicion > 5);//se repite si no cumple con los requisitos
 
             if (dinero >= precio[numOpcion - 1] && vs[numPosicion - 1].Equals("vacio"))// si el dinero uqe tenemos es mayor que lo que cuesta podemos comprar. y si la pocision escogida esta vacia tambien podemos comprar
             {
@@ -105,14 +113,17 @@ namespace PartePracticaB
                 {
                     Console.Write("\t\t\t\t" + value + "\n\t\t");// asi como las pociones que tenemos
                 }
+                
                 Console.WriteLine("Elige posicion de la pocion que quieres vender");//preguntamos la pocion que queremos vender, pero se pregunta es la posicion en la que la tenemos
                 posicion = int.TryParse(Console.ReadLine(), out numPosicion);
+                
                 if (!posicion || numPosicion < 1 || numPosicion > 5)//verificamos
                 {
                     Console.WriteLine("Opción incorrecta, inserte un valor entre 1 y 5. \n Pulse una tecla para continuar");
                     Console.ReadKey();
                 }
-            } while (!posicion || numPosicion < 1 || numPosicion > 5);//se repite si no cumplimos
+            } 
+            while (!posicion || numPosicion < 1 || numPosicion > 5);//se repite si no cumplimos
 
             string pocion = vs[numPosicion - 1];
             if (pocion.Equals("vacio"))// si esta vacio escogimos mal
@@ -140,7 +151,9 @@ namespace PartePracticaB
             {
                 huecos[i] = "vacio"; // llenamos los huecos de vacio
             }
+            
             int opc = Menu(dinero, huecos);//usampos el menu
+            
             while (opc < 3)
             {
                 switch (opc)
